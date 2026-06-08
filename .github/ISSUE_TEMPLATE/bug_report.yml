@@ -1,0 +1,52 @@
+name: 🐛 Bug Report
+description: Report a problem to help us improve
+title: '[Bug]: '
+labels: ['bug']
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for taking the time to file a bug report! Please fill in the details below.
+  - type: textarea
+    id: description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      description: How can we reproduce the behavior?
+      placeholder: |
+        1. Go to '...'
+        2. Click on '...'
+        3. See error
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system, browser, Node.js and MySQL versions.
+      placeholder: |
+        - OS: Windows 11
+        - Browser: Chrome 125
+        - Node: 20.x
+        - MySQL: 8.0
+    validations:
+      required: false
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Screenshots, logs or anything else that helps.
+    validations:
+      required: false

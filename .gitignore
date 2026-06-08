@@ -1,0 +1,50 @@
+# Dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+
+# Testing
+/coverage
+
+# Next.js
+/.next/
+/out/
+/build
+next-env.d.ts.bak
+
+# Production
+/dist
+
+# Misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local env files — NEVER commit real secrets
+.env
+.env*.local
+.env.development
+.env.production
+
+# Editor / IDE / tooling
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.swp
+.claude/
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+
+# OS / Office lock files
+~$*

@@ -1,0 +1,36 @@
+services:
+  db:
+    image: mysql:8
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-secret}
+      MYSQL_DATABASE: ${DB_NAME:-dental_management_system}
+    ports:
+      - '3306:3306'
+    volumes:
+      - dms-mysql:/var/lib/mysql
+    healthcheck:
+      test: ['CMD', 'mysqladmin', 'ping', '-h', 'localhost', '-p${DB_PASSWORD:-secret}']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      DB_HOST: db
+      DB_PORT: '3306'
+      DB_USER: root
+      DB_PASSWORD: ${DB_PASSWORD:-secret}
+      DB_NAME: ${DB_NAME:-dental_management_system}
+      AUTH_SECRET: ${AUTH_SECRET:-please-change-this-to-a-strong-secret-min-32-chars}
+      NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://localhost:3000}
+    ports:
+      - '3000:3000'
+
+volumes:
+  dms-mysql:
